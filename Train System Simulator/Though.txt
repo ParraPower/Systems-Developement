@@ -1,0 +1,10 @@
+connection? a class containing detail of a transfer between tracksections (or single track section) allowing trains to move from one track to another
+
+Calculating if a train will end up on the same track position as another train
+
+line? best to have indepentant tracks for when lines merge
+WHY? The reason is due to the complex nature of determining at what point will 2 trains occupy the same real estate at the same time.
+Event this way, we need to be careful about parrallel tracks. 
+The co-orditinates will be at such a point that confusion in the code regarding positions of trains will become rampant
+
+
