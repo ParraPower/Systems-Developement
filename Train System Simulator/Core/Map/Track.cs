@@ -27,7 +27,7 @@ namespace Core
             _coordinate = Coordinate;
             _maxSpeed = MaxSpeed;
             _gauge = Gauge;
-            _trackCount = TrackCount;
+            _trackCount = TrackCount; 
         }
 
         public Guid UniqueID
