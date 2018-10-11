@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core
+namespace SimulatorCore
 {
 
     interface IRailVehicle

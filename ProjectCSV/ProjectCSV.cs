@@ -37,7 +37,7 @@ namespace ProjectCSV.Core
             return sum;
         }
 
-        public static Dictionary<String, String>[] ParseCommaSeparateValueFile(String FullFilePath, int ColumnsNeeded) {
+        public static Dictionary<String, String>[] ParseCommaSeparateValueFile(String FullFilePath, int ColumnsNeeded, bool containsColumnHeaders) {
 
             List<Dictionary<String, String>> data = new List<Dictionary<string, string>>();
 
@@ -47,6 +47,8 @@ namespace ProjectCSV.Core
                 using (StreamReader csvStreamReader = new StreamReader(csvStream))
                 {
                     int rowIter = 1;
+                    List<string> columnHeaders = new List<string>();
+
                     while (!csvStreamReader.EndOfStream)
                     {
                         Dictionary<String, String> keyValueSplits = new Dictionary<string, string>();
@@ -234,11 +236,26 @@ namespace ProjectCSV.Core
                                 {
                                     throw new System.IO.FileFormatException("CSV is in invalid format");
                                 }
-
+                                
                                 int columnIter = 1;
+
+                                
                                 foreach (string quotedSplit in quotedSplits)
                                 {
-                                    keyValueSplits.Add(String.Concat(rowIter, GetColNameFromIndex(columnIter)), quotedSplit);
+                                    if (rowIter == 1 && containsColumnHeaders)
+                                    {
+                                        columnHeaders.Add(quotedSplit);
+                                    }
+                                    else
+                                    {
+                                        string key = String.Concat(rowIter, GetColNameFromIndex(columnIter));
+                                        if (containsColumnHeaders)
+                                        {
+                                            key = columnHeaders[columnIter - 1];
+                                        }
+
+                                        keyValueSplits.Add(key, quotedSplit);
+                                    }
                                     columnIter++;
                                 }
                             }
@@ -254,12 +271,27 @@ namespace ProjectCSV.Core
                             int columnIter = 1;
                             foreach (string split in splitsTemp)
                             {
-                                keyValueSplits.Add(String.Concat(rowIter, GetColNameFromIndex(columnIter)), split);
+                                if (rowIter == 1 && containsColumnHeaders)
+                                {
+                                    columnHeaders.Add(split);
+                                }
+                                else
+                                {
+                                    string key = String.Concat(rowIter, GetColNameFromIndex(columnIter));
+                                    if (containsColumnHeaders) {
+                                        key = columnHeaders[columnIter - 1];
+                                    }
+
+                                    keyValueSplits.Add(key, split);
+                                }
                                 columnIter++;
                             }
                             
                         }
-                        data.Add(keyValueSplits);
+                        if (!(rowIter == 1 && containsColumnHeaders))
+                        {
+                            data.Add(keyValueSplits);
+                        }
                         rowIter++;
                     }
                     

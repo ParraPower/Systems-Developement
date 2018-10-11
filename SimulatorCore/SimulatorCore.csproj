@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0967D028-D1B4-46D7-A08D-8EE0ACFB1413}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{FCACF7BA-EA9D-4401-96C8-ECBC972B0A9A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Train_System_Simulator</RootNamespace>
-    <AssemblyName>Train System Simulator</AssemblyName>
+    <RootNamespace>SimulatorCore</RootNamespace>
+    <AssemblyName>SimulatorCore</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,23 +32,28 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Map\ImportTracks.cs" />
+    <Compile Include="Map\ITrackPoint.cs" />
+    <Compile Include="Map\Line.cs" />
+    <Compile Include="Map\Station.cs" />
+    <Compile Include="Map\TrackPoint.cs" />
+    <Compile Include="Vehicle\IRailVehicle.cs" />
+    <Compile Include="Vehicle\RailVehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImportTrackSimulatorData\ImportTrackSimulatorData.csproj">
-      <Project>{98a4989a-d168-4bae-bbf4-2d6d37b72ac6}</Project>
-      <Name>ImportTrackSimulatorData</Name>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{4f7dcf9b-d38a-4657-8d87-8a0b87a99186}</Project>
+      <Name>Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

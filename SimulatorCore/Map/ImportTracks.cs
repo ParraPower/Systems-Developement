@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProjectCSV.Core;
+//using ProjectCSV.Core;
 
-namespace Core
+namespace SimulatorCore
 {
     public static class ImportTracks
     {

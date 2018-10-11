@@ -1,0 +1,9 @@
+ideally to create a line,
+
+1. a checkbox to begin creating a line commences
+2. user clicks on start of line (at a station marker) - need to define what a "station marker" is
+3. and polygon forms based on places user clicks on
+4. until user clicks on final station marker
+5. then unchecks creating a line checkbox
+6. line is fully created
+

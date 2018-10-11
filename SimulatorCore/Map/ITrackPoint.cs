@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Device.Location;
 
-namespace Core
+namespace SimulatorCore
 {
     interface ITrackPoint
     {
+        int? DatabaseUniqueID
+        {
+            get;
+        }
         Guid UniqueID
         {
             get;
@@ -21,10 +25,10 @@ namespace Core
         {
             get;
         }
-        Double Gauge
-        {
-            get;
-        }
+        //Double Gauge
+        //{
+        //    get;
+        //}
         SByte TrackCount
         {
             get;
